@@ -1,0 +1,15 @@
+target
+.project
+.classpath
+.settings
+/.project
+/src/main/webapp/views/.idea
+.idea
+/focus-wap.iml
+*.iml
+/bin
+/LOG_PATH_IS_UNDEFINED
+/build
+/classes
+/target
+.gradle/
