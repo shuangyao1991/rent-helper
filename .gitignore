@@ -3,7 +3,6 @@ target
 .classpath
 .settings
 /.project
-/src/main/webapp/views/.idea
 .idea
 /focus-wap.iml
 *.iml
@@ -13,3 +12,10 @@ target
 /classes
 /target
 .gradle/
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
