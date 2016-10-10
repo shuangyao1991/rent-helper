@@ -16,13 +16,19 @@ public class JsonUtil {
 
     private static final Logger logger = Logger.getLogger(JsonUtil.class);
 
-    public static final String EMPTY = "";
-
     public static final String EMPTY_JSON = "{}";
 
     public static final String EMPTY_JSON_ARRAY = "[]";
 
     public static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
+
+    public static String toJson(Object target) {
+        return toJson(target, null, true, null, null, false);
+    }
+
+    public static String toJson(Object target, boolean isSerializeNulls) {
+        return toJson(target, null, isSerializeNulls, null, null, false);
+    }
 
     public static String toJson(Object target, Type targetType,
                                 boolean isSerializeNulls, Double version, String datePattern,
@@ -56,7 +62,8 @@ public class JsonUtil {
             }
         } catch (Exception e) {
             if (logger.isDebugEnabled()) {
-                logger.debug("");
+                logger.debug("Failed to transform the target type " +
+                        targetType.getClass().getName()+ "{} to Json.");
             }
             if (target instanceof Collection
                     || target instanceof Iterator
