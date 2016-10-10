@@ -1,3 +1,4 @@
 rootProject.name = 'rent-helper'
 include 'core'
+include 'tip-dialog'
 
