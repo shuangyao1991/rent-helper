@@ -1,8 +1,7 @@
-package model;
+package renthelper.core.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created with by shuangyao on 2016/10/9.

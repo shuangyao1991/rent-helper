@@ -1,6 +1,6 @@
-package model;
+package renthelper.core.model;
 
-import constants.RentTypeEnum;
+import renthelper.core.constants.RentTypeEnum;
 
 import java.io.Serializable;
 import java.util.Date;

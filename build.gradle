@@ -1,9 +1,9 @@
-group 'ys'
-version '1.0-SNAPSHOT'
-
-
-
 allprojects {
+    group 'ys.renthelper'
+    version '1.0-SNAPSHOT'
+}
+
+subprojects {
     apply plugin: 'java'
 
     sourceCompatibility = 1.5
@@ -14,7 +14,12 @@ allprojects {
     }
 
     dependencies {
-        compile 'log4j:log4j:1.2.14'
+        compile 'ch.qos.logback:logback-core:1.1.7'
+        compile 'ch.qos.logback:logback-classic:1.1.7'
+        compile 'org.slf4j:jcl-over-slf4j:1.7.21'
+        compile 'org.slf4j:jul-to-slf4j:1.7.21'
+        compile 'org.slf4j:log4j-over-slf4j:1.7.21'
+
         compile 'commons-io:commons-io:2.2'
         compile 'com.google.guava:guava:19.0'
         compile 'commons-lang:commons-lang:2.4'
