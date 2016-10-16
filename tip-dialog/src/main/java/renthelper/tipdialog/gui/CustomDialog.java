@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import renthelper.core.constants.GuiConstant;
+import renthelper.core.constants.GuiLocationEnum;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,15 +12,15 @@ import java.awt.*;
 /**
  * Created with by shuangyao on 2016/10/14.
  */
-public class CustomDialog extends JDialog {
+public class CustomDialog extends JDialog{
 
     private static final Logger logger = LoggerFactory.getLogger(CustomDialog.class);
 
     private static final int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
     private static final int SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
     private static final String DEFAULT_LOOKANDFEEL = "javax.swing.plaf.nimbus.NimbusLookAndFeel";
-    private static final int DEFAULT_WIDTH = 200;
-    private static final int DEFAULT_HEIGHT = 50;
+    private static final int DEFAULT_WIDTH = 400;
+    private static final int DEFAULT_HEIGHT = 200;
     private static final String DEFAULT_TITLE = "CustomDialog";
     private static final String DEFAULT_MESSAGE = "CustomDialog Message";
 
@@ -34,27 +34,27 @@ public class CustomDialog extends JDialog {
     private String message = DEFAULT_MESSAGE;
     private int key;
 
-    static {
-        setDefaultLookAndFeel();
+    public CustomDialog() {
+        initializing(null);
     }
 
-    public CustomDialog(Frame owner) {
-        super(owner, DEFAULT_TITLE);
-        initializing(DEFAULT_WIDTH, DEFAULT_WIDTH, DEFAULT_MESSAGE);
+    public CustomDialog(int key) {
+        this.key = key;
+        initializing(null);
     }
 
-    public CustomDialog(Frame owner, String title, String message) {
-        super(owner, title);
-        initializing(DEFAULT_WIDTH, DEFAULT_WIDTH, message);
+    public CustomDialog(int key, String message, String title, int width, int height) {
+        this.key = key;
+        this.message = message;
+        this.title = title;
+        this.width = width;
+        this.height = height;
+        initializing(null);
     }
 
-    public CustomDialog (Frame owner, int width, int height, String title, String message) {
-        super(owner, title);
-        initializing(width, height, message);
-    }
-
-    private void initializing(int width, int height, String message) {
-        this.setModalityType(ModalityType.TOOLKIT_MODAL);
+    private void initializing(Frame owner) {
+        this.setTitle(title);
+        this.setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
         this.setBounds(0, 0, width, height);
         this.setLayout(new BorderLayout());
 
@@ -72,33 +72,21 @@ public class CustomDialog extends JDialog {
         this.getContentPane().add(buttonPane, BorderLayout.SOUTH);
     }
 
-
-
-
-    public static void setLookAndFeel(String lookAndFeel) {
-        Preconditions.checkArgument(StringUtils.isNotBlank(lookAndFeel));
-        try {
-            UIManager.setLookAndFeel(lookAndFeel);
-        } catch (ClassNotFoundException
-                |InstantiationException
-                |IllegalAccessException e) {
-            logger.error("SetLookAndFeel failed!", e);
-        }  catch (UnsupportedLookAndFeelException e) {
-            logger.debug("Catch UnsupportedLookAndFeelException, invoke default lookAndFeel.");
-            setDefaultLookAndFeel();
-        }
+    public int getKey() {
+        return key;
     }
 
-    public static void setDefaultLookAndFeel() {
-        try {
-            logger.debug("Set default lookAndFeel...");
-            UIManager.setLookAndFeel(DEFAULT_LOOKANDFEEL);
-        } catch (ClassNotFoundException
-                |InstantiationException
-                |IllegalAccessException
-                |UnsupportedLookAndFeelException e) {
-            logger.error("Set default lookAndFeel failed!", e);
-        }
+    public void close() {
+        this.dispose();
     }
 
+    @Override
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
 }
