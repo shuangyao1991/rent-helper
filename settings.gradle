@@ -1,4 +1,6 @@
 rootProject.name = 'rent-helper'
 include 'core'
 include 'tip-dialog'
+include 'info-pane'
+include 'query-thread'
 
