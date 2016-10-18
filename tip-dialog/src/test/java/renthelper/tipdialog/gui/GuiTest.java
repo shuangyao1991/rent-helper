@@ -12,9 +12,9 @@ public class GuiTest {
 
     @Test
     public void testCustomDialog() throws Exception {
+        GuiUtil.setDefaultLookAndFeel();
         CustomDialog customDialog = new CustomDialog(1);
         GuiUtil.setLocation(customDialog, GuiLocationEnum.BUTTOM_RIGHT);
-        GuiUtil.setDefaultLookAndFeel();
         customDialog.setVisible(true);
 
 
