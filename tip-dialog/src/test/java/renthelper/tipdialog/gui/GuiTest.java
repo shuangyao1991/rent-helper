@@ -1,7 +1,6 @@
 package renthelper.tipdialog.gui;
 
 import org.junit.Test;
-import renthelper.core.constants.GuiConstant;
 import renthelper.core.constants.GuiLocationEnum;
 import renthelper.core.utils.GuiUtil;
 
