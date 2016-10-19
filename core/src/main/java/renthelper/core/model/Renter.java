@@ -22,6 +22,8 @@ public class Renter implements Serializable {
 
     private Date birthDay;
 
+    private Date creatTime;
+
     public Integer getRid() {
         return rid;
     }
@@ -68,5 +70,13 @@ public class Renter implements Serializable {
 
     public void setBirthDay(Date birthDay) {
         this.birthDay = birthDay;
+    }
+
+    public Date getCreatTime() {
+        return creatTime;
+    }
+
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
     }
 }
