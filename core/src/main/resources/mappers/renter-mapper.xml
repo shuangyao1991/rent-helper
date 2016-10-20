@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="renthelper.core.dao.RenterDAO">
+
+    <resultMap id="renterMap" type="Renter">
+        <result property="uid" column="uid" javaType="java.lang.Integer"/>
+        <result property="name" column="name" javaType="java.lang.String"/>
+        <result property="mobile" column="mobile" javaType="java.lang.String"/>
+        <result property="age" column="age" javaType="java.lang.Integer"/>
+        <result property="gender" column="gender" javaType="java.lang.String"/>
+        <result property="birthday" column="birthday" javaType="java.lang.String"/>
+        <result property="comment" column="comment" javaType="java.lang.String"/>
+        <result property="createTime" column="create_time" javaType="java.lang.String"/>
+    </resultMap>
+
+    <select id="getMaxId" resultType="java.lang.Integer">
+        SELECT max(uid) FROM renter;
+    </select>
+
+    <insert id="save" parameterType="Renter">
+        INSERT INTO renter (uid, name, mobile, age,
+        <if test="#renter.gender != null">
+            gender,
+        </if>
+        <if test="#renter.birthday != null">
+            birthday,
+        </if>
+        comment)
+        VALUES (#renter.uid, #renter.name, #renter.mobile, #renter.age,
+        <if test="#renter.gender != null">
+            #renter.gender,
+        </if>
+        <if test="#renter.birthday != null">
+            #renter.birthday,
+        </if>
+        #renter.comment
+        )
+    </insert>
+
+    <select id="getAll" resultMap="renterMap" resultType="java.util.List">
+        SELECT * FROM renter
+    </select>
+
+    <select id="getById" resultMap="renterMap">
+        SELECT * FROM renter WHERE uid = #id
+    </select>
+
+    <select id="getByName" resultMap="renterMap">
+        SELECT * FROM renter where name = #name
+    </select>
+
+</mapper>

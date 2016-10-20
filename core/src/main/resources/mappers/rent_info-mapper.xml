@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="renthelper.core.dao.RentInfoDAO">
+    <resultMap id="rentInfoMap" type="RentInfo">
+        <result property="iid" column="iid" javaType="java.lang.Integer"/>
+        <result property="rid" column="rid" javaType="java.lang.Integer"/>
+        <result property="uid" column="uid" javaType="java.lang.Integer"/>
+        <result property="rentalPerMonth" column="rental_per_month" javaType="java.lang.Integer"/>
+        <result property="renterNumber" column="renter_number" javaType="java.lang.Integer"/>
+        <result property="startTime" column="start_time" javaType="java.lang.String"/>
+        <result property="endTime" column="end_time" javaType="java.lang.String"/>
+        <result property="type" column="type" javaType="java.lang.String"/>
+        <result property="rentalExpireTime" column="rental_expire_time" javaType="java.lang.String"/>
+        <result property="createTime" column="create_time" javaType="java.lang.String"/>
+    </resultMap>
+
+    <select id="getMaxId" resultType="java.lang.Integer">
+        SELECT  MAX(iid) FROM rent_info
+    </select>
+
+    <insert id="save" parameterType="RentInfo">
+        INSERT  INTO rent_info (iid, rid, uid, rental_per_month,
+        <if test="#rentInfo.renterNumber != null">
+            renter_number,
+        </if>
+        start_time, end_time,
+        <if test="#rentInfo.type != null">
+            type,
+        </if>
+        rental_expire_time)
+        VALUES (#rentInfo.iid, #rentInfo.rid, #rentInfo.uid, #rentInfo.rentalPerMonth,
+        <if test="#rentInfo.renterNumber != null">
+            #rentInfo.renterNumber,
+        </if>
+        #rentInfo.startTime, #rentInfo.endTime,
+        <if test="#rentInfo.type != null">
+            #rentInfo.type,
+        </if>
+        #rentInfo.rentalExpireTime)
+    </insert>
+
+
+
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="renthelper.core.dao.RentLogDAO">
+    <resultMap id="rentLogMap" type="RentLog">
+        <result property="lid" column="lid" javaType="java.lang.Integer"/>
+        <result property="uid" column="uid" javaType="java.lang.Integer"/>
+        <result property="rid" column="rid" javaType="java.lang.Integer"/>
+        <result property="pay" column="pay" javaType="java.lang.Integer"/>
+        <result property="rentalExpireTime" column="rental_expire_time" javaType="java.lang.String"/>
+        <result property="createTime" column="create_time" javaType="java.lang.String"/>
+    </resultMap>
+</mapper>

@@ -1,8 +1,8 @@
 CREATE TABLE renter (
   uid INTEGER PRIMARY KEY,
   name CHAR(15) NOT NULL ,
-  mobile CHAR(15) DEFAULT '',
-  age INT DEFAULT 0,
+  mobile CHAR(15) ,
+  age INT DEFAULT ,
   gender CHAR DEFAULT '未知',
   birthday TEXT DEFAULT '0000-00-00 00:00:00',
   comment CHAR(15) DEFAULT '',
@@ -10,6 +10,7 @@ CREATE TABLE renter (
 );
 
 CREATE TABLE rent_info (
+  iid INTEGER PRIMARY KEY,
   rid INT NOT NULL ,
   uid INT NOT NULL ,
   renter_number INT DEFAULT 1,

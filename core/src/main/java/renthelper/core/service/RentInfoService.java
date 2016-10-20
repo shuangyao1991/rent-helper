@@ -1,13 +1,14 @@
-package renthelper.core.dao;
+package renthelper.core.service;
 
 import renthelper.core.model.RentInfo;
 
 import java.util.List;
 
 /**
- * Created with by shuangyao on 2016/10/20.
+ * Created by flyig.
+ * Date: 2016/10/20.
  */
-public interface RentInfoDAO {
+public interface RentInfoService {
 
     public int getMaxId();
 
