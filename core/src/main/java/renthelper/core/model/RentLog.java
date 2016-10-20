@@ -8,26 +8,24 @@ import java.util.Date;
  */
 public class RentLog implements Serializable {
 
-    private Integer id;
+    private Integer lid;
 
     private Integer rid;
 
-    private Integer number;
+    private Integer uid;
 
-    private Double money;
+    private Integer pay;
 
-    private Date startTime;
+    private String rentalExpireTime;
 
-    private Date endTime;
+    private String createTime;
 
-    private Date createTime;
-
-    public Integer getId() {
-        return id;
+    public Integer getLid() {
+        return lid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLid(Integer lid) {
+        this.lid = lid;
     }
 
     public Integer getRid() {
@@ -38,43 +36,35 @@ public class RentLog implements Serializable {
         this.rid = rid;
     }
 
-    public Integer getNumber() {
-        return number;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
-    public Double getMoney() {
-        return money;
+    public Integer getPay() {
+        return pay;
     }
 
-    public void setMoney(Double money) {
-        this.money = money;
+    public void setPay(Integer pay) {
+        this.pay = pay;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public String getRentalExpireTime() {
+        return rentalExpireTime;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setRentalExpireTime(String rentalExpireTime) {
+        this.rentalExpireTime = rentalExpireTime;
     }
 
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 }

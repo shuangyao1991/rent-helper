@@ -5,6 +5,7 @@ CREATE TABLE renter (
   age INT DEFAULT 0,
   gender CHAR DEFAULT '未知',
   birthday TEXT DEFAULT '0000-00-00 00:00:00',
+  comment CHAR(15) DEFAULT '',
   create_time TIMESTAMP DEFAULT (datetime('now', 'localtime'))
 );
 
@@ -25,5 +26,6 @@ CREATE TABLE rent_log(
   uid INT NOT NULL ,
   rid INT NOT NULL ,
   pay INT NOT NULL ,
+  rental_expire_time TEXT DEFAULT '0000-00-00',
   create_time TIMESTAMP DEFAULT (datetime('now', 'localtime'))
 )

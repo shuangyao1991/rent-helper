@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class Renter implements Serializable {
 
-    private Integer rid;
+    private Integer uid;
 
     private String name;
 
@@ -18,18 +18,20 @@ public class Renter implements Serializable {
 
     private Integer age;
 
-    private GenderEnum gender;
+    private String gender;
 
-    private Date birthDay;
+    private String birthDay;
 
-    private Date creatTime;
+    private String comment;
 
-    public Integer getRid() {
-        return rid;
+    private String creatTime;
+
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setRid(Integer rid) {
-        this.rid = rid;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public String getName() {
@@ -56,27 +58,35 @@ public class Renter implements Serializable {
         this.age = age;
     }
 
-    public GenderEnum getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(GenderEnum gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 
-    public Date getCreatTime() {
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getCreatTime() {
         return creatTime;
     }
 
-    public void setCreatTime(Date creatTime) {
+    public void setCreatTime(String creatTime) {
         this.creatTime = creatTime;
     }
 }

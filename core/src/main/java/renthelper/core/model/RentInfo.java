@@ -10,26 +10,30 @@ import java.util.Date;
  */
 public class RentInfo implements Serializable {
 
-    private Integer number;
+    private Integer rid;
 
     private Double rentalPerMonth;
 
-    private Integer rid;
+    private Integer renterNumber;
+
+    private Integer uid;
 
     private Date startTime;
 
     private Date endTime;
 
-    private RentTypeEnum rentTypeEnum;
+    private String type;
 
-    private Date expireTime;
+    private String rentalExpireTime;
 
-    public Integer getNumber() {
-        return number;
+    private String createTime;
+
+    public Integer getRid() {
+        return rid;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setRid(Integer rid) {
+        this.rid = rid;
     }
 
     public Double getRentalPerMonth() {
@@ -40,12 +44,20 @@ public class RentInfo implements Serializable {
         this.rentalPerMonth = rentalPerMonth;
     }
 
-    public Integer getRid() {
-        return rid;
+    public Integer getRenterNumber() {
+        return renterNumber;
     }
 
-    public void setRid(Integer rid) {
-        this.rid = rid;
+    public void setRenterNumber(Integer renterNumber) {
+        this.renterNumber = renterNumber;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public Date getStartTime() {
@@ -64,19 +76,27 @@ public class RentInfo implements Serializable {
         this.endTime = endTime;
     }
 
-    public RentTypeEnum getRentTypeEnum() {
-        return rentTypeEnum;
+    public String getType() {
+        return type;
     }
 
-    public void setRentTypeEnum(RentTypeEnum rentTypeEnum) {
-        this.rentTypeEnum = rentTypeEnum;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Date getExpireTime() {
-        return expireTime;
+    public String getRentalExpireTime() {
+        return rentalExpireTime;
     }
 
-    public void setExpireTime(Date expireTime) {
-        this.expireTime = expireTime;
+    public void setRentalExpireTime(String rentalExpireTime) {
+        this.rentalExpireTime = rentalExpireTime;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }
