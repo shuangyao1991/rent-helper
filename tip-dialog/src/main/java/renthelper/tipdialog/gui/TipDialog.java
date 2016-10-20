@@ -1,24 +1,20 @@
 package renthelper.tipdialog.gui;
 
-import com.google.common.base.Preconditions;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import renthelper.core.constants.GuiLocationEnum;
+import renthelper.tipdialog.listerners.TipDialogListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * Created with by shuangyao on 2016/10/14.
  */
-public class CustomDialog extends JDialog{
+public class TipDialog extends JDialog{
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomDialog.class);
+    private final Logger logger = LoggerFactory.getLogger(TipDialog.class);
 
-    private static final int SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
-    private static final int SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
-    private static final String DEFAULT_LOOKANDFEEL = "javax.swing.plaf.nimbus.NimbusLookAndFeel";
     private static final int DEFAULT_WIDTH = 400;
     private static final int DEFAULT_HEIGHT = 200;
     private static final String DEFAULT_TITLE = "CustomDialog";
@@ -32,19 +28,14 @@ public class CustomDialog extends JDialog{
     private int height = DEFAULT_HEIGHT;
     private String title = DEFAULT_TITLE;
     private String message = DEFAULT_MESSAGE;
-    private int key;
 
-    public CustomDialog() {
+    private String eventKey;
+
+    public TipDialog() {
         initializing(null);
     }
 
-    public CustomDialog(int key) {
-        this.key = key;
-        initializing(null);
-    }
-
-    public CustomDialog(int key, String message, String title, int width, int height) {
-        this.key = key;
+    public TipDialog(String message, String title, int width, int height) {
         this.message = message;
         this.title = title;
         this.width = width;
@@ -64,20 +55,27 @@ public class CustomDialog extends JDialog{
         messagePane.setText(message);
         this.getContentPane().add(messagePane, BorderLayout.CENTER);
 
+        TipDialogListener listener = new TipDialogListener();
         okButton = new JButton("ok");
+        okButton.setName("ok");
         cancelButton = new JButton("cacel");
+        cancelButton.setName("cancel");
         JPanel buttonPane = new JPanel();
         buttonPane.add(okButton);
         buttonPane.add(cancelButton);
         this.getContentPane().add(buttonPane, BorderLayout.SOUTH);
-    }
 
-    public int getKey() {
-        return key;
+        this.addActionListener(listener, okButton);
+        this.addActionListener(listener, cancelButton);
     }
 
     public void close() {
         this.dispose();
+    }
+
+    public void addActionListener(TipDialogListener listener, JButton button) {
+        listener.setTipDialog(this);
+        button.addActionListener(listener);
     }
 
     @Override
@@ -88,5 +86,13 @@ public class CustomDialog extends JDialog{
     @Override
     public int getWidth() {
         return width;
+    }
+
+    public String getEventKey() {
+        return eventKey;
+    }
+
+    public void setEventKey(String eventKey) {
+        this.eventKey = eventKey;
     }
 }

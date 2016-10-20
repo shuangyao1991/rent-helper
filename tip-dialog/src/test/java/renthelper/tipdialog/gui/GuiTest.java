@@ -10,12 +10,16 @@ import renthelper.core.utils.GuiUtil;
 public class GuiTest {
 
     @Test
-    public void testCustomDialog() throws Exception {
+    public void testTipShowDialog() throws Exception {
         GuiUtil.setDefaultLookAndFeel();
-        CustomDialog customDialog = new CustomDialog(1);
-        GuiUtil.setLocation(customDialog, GuiLocationEnum.BUTTOM_RIGHT);
-        customDialog.setVisible(true);
+        TipDialog tipDialog = new TipDialog();
+        GuiUtil.setLocation(tipDialog, GuiLocationEnum.BUTTOM_RIGHT);
+        tipDialog.setVisible(true);
+    }
 
-
+    @Test
+    public void testConfirmDialog() throws Exception {
+        GuiUtil.setDefaultLookAndFeel();
+        ConfirmDialog dialog = new ConfirmDialog("name", "mobile", 111, 3, 123, "title");
     }
 }
