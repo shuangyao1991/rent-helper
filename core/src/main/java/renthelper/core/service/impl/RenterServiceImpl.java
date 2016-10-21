@@ -9,6 +9,7 @@ import renthelper.core.model.Renter;
 import renthelper.core.service.RenterService;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,7 +29,8 @@ public class RenterServiceImpl implements RenterService{
             logger.warn("Essential information absent to save.");
             return;
         }
-        int id = renterDAO.getMaxId();
+        Integer id = renterDAO.getMaxId();
+        id = id == null ? 0 : id;
         renter.setUid(id + 1);
         renterDAO.save(renter);
     }
@@ -49,4 +51,5 @@ public class RenterServiceImpl implements RenterService{
     public Renter getByName(String name) {
         return renterDAO.getByName(name);
     }
+
 }

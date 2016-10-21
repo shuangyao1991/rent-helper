@@ -7,7 +7,18 @@
         <result property="uid" column="uid" javaType="java.lang.Integer"/>
         <result property="rid" column="rid" javaType="java.lang.Integer"/>
         <result property="pay" column="pay" javaType="java.lang.Integer"/>
-        <result property="rentalExpireTime" column="rental_expire_time" javaType="java.lang.String"/>
-        <result property="createTime" column="create_time" javaType="java.lang.String"/>
+        <result property="rentalExpireTime" column="rental_expire_time" jdbcType="DATE" typeHandler="DateTypeHandler"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP" typeHandler="DateTimeTypeHandler"/>
     </resultMap>
+
+    <select id="getMaxId" resultType="java.lang.Integer">
+        SELECT max(lid) FROM rent_log
+    </select>
+
+    <insert id="save" parameterType="RentLog" >
+        INSERT INTO rent_log (lid, uid, rid, pay, rental_expire_time)
+        VALUES (#{rentLog.lid}, #{rentLog.uid}, #{rentLog.rid}, #{rentLog.pay},
+        #{rentLog.rentalExpireTime, typeHandler=DateTypeHandler})
+    </insert>
+
 </mapper>

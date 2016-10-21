@@ -16,9 +16,9 @@ public class RentLog implements Serializable {
 
     private Integer pay;
 
-    private String rentalExpireTime;
+    private Date rentalExpireTime;
 
-    private String createTime;
+    private Date createTime;
 
     public Integer getLid() {
         return lid;
@@ -52,19 +52,19 @@ public class RentLog implements Serializable {
         this.pay = pay;
     }
 
-    public String getRentalExpireTime() {
+    public Date getRentalExpireTime() {
         return rentalExpireTime;
     }
 
-    public void setRentalExpireTime(String rentalExpireTime) {
+    public void setRentalExpireTime(Date rentalExpireTime) {
         this.rentalExpireTime = rentalExpireTime;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 }

@@ -1,7 +1,9 @@
 package renthelper.core.dao;
 
+import org.apache.ibatis.annotations.Param;
 import renthelper.core.model.RentInfo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,11 +11,12 @@ import java.util.List;
  */
 public interface RentInfoDAO {
 
-    public int getMaxId();
+    public Integer getMaxId();
 
-    public void save(RentInfo rentInfo);
+    public void save(@Param("rentInfo") RentInfo rentInfo);
 
-    public void update(RentInfo rentInfo);
+    public void updateExpireTime(@Param("rentalExpireTime") Date rentalExpireTime,
+                                 @Param("iid") int iid);
 
-    public List<RentInfo> getExpireInfo(String currentTime);
+    public List<RentInfo> getExpireInfo();
 }

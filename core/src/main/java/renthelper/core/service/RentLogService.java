@@ -10,9 +10,7 @@ import java.util.List;
  */
 public interface RentLogService {
 
-    public void getMaxId();
+    public int getMaxId();
 
     public void save(RentLog rentLog);
-
-    public List<RentLog> query(int offset, int limit);
 }

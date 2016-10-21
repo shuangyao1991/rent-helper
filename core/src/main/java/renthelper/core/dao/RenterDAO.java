@@ -1,7 +1,9 @@
 package renthelper.core.dao;
 
+import org.apache.ibatis.annotations.Param;
 import renthelper.core.model.Renter;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,9 +11,9 @@ import java.util.List;
  */
 public interface RenterDAO {
 
-    public int getMaxId();
+    public Integer getMaxId();
 
-    public void save(Renter renter);
+    public void save(@Param("renter") Renter renter);
 
     public List<Renter> getAll();
 

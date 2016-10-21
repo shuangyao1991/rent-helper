@@ -9,9 +9,9 @@
         <result property="mobile" column="mobile" javaType="java.lang.String"/>
         <result property="age" column="age" javaType="java.lang.Integer"/>
         <result property="gender" column="gender" javaType="java.lang.String"/>
-        <result property="birthday" column="birthday" javaType="java.lang.String"/>
+        <result property="birthday" column="birthday" javaType="java.sql.Date" typeHandler="DateTypeHandler"/>
         <result property="comment" column="comment" javaType="java.lang.String"/>
-        <result property="createTime" column="create_time" javaType="java.lang.String"/>
+        <result property="createTime" column="create_time" typeHandler="DateTimeTypeHandler"/>
     </resultMap>
 
     <select id="getMaxId" resultType="java.lang.Integer">
@@ -20,21 +20,21 @@
 
     <insert id="save" parameterType="Renter">
         INSERT INTO renter (uid, name, mobile, age,
-        <if test="#renter.gender != null">
+        <if test="#{renter.gender} != null">
             gender,
         </if>
-        <if test="#renter.birthday != null">
+        <if test="#{renter.birthday} != null">
             birthday,
         </if>
         comment)
-        VALUES (#renter.uid, #renter.name, #renter.mobile, #renter.age,
-        <if test="#renter.gender != null">
-            #renter.gender,
+        VALUES (#{renter.uid}, #{renter.name}, #{renter.mobile}, #{renter.age},
+        <if test="#{renter.gender} != null">
+            #{renter.gender},
         </if>
-        <if test="#renter.birthday != null">
-            #renter.birthday,
+        <if test="#{renter.birthday} != null">
+            #{renter.birthday, jdbcType=VARCHAR, typeHandler=DateTypeHandler},
         </if>
-        #renter.comment
+        #{renter.comment}
         )
     </insert>
 
@@ -43,11 +43,11 @@
     </select>
 
     <select id="getById" resultMap="renterMap">
-        SELECT * FROM renter WHERE uid = #id
+        SELECT * FROM renter WHERE uid = #{id}
     </select>
 
     <select id="getByName" resultMap="renterMap">
-        SELECT * FROM renter where name = #name
+        SELECT * FROM renter where name = #{name}
     </select>
 
 </mapper>

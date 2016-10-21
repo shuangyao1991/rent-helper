@@ -2,6 +2,7 @@ package renthelper.core.service;
 
 import renthelper.core.model.RentInfo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public interface RentInfoService {
 
     public void save(RentInfo rentInfo);
 
-    public void update(RentInfo rentInfo);
+    public void updateExpireTime(Date rentalExpireTime, int iid);
 
-    public List<RentInfo> getExpireInfo(String currentTime);
+    public List<RentInfo> getExpireInfo();
 }

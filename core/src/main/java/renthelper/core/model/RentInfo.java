@@ -20,15 +20,15 @@ public class RentInfo implements Serializable {
 
     private Integer uid;
 
-    private String startTime;
+    private Date startTime;
 
-    private String endTime;
+    private Date endTime;
 
     private String type;
 
-    private String rentalExpireTime;
+    private Date rentalExpireTime;
 
-    private String createTime;
+    private Date createTime;
 
     public Integer getIid() {
         return iid;
@@ -70,19 +70,19 @@ public class RentInfo implements Serializable {
         this.uid = uid;
     }
 
-    public String getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -94,19 +94,35 @@ public class RentInfo implements Serializable {
         this.type = type;
     }
 
-    public String getRentalExpireTime() {
+    public Date getRentalExpireTime() {
         return rentalExpireTime;
     }
 
-    public void setRentalExpireTime(String rentalExpireTime) {
+    public void setRentalExpireTime(Date rentalExpireTime) {
         this.rentalExpireTime = rentalExpireTime;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "RentInfo{" +
+                "iid=" + iid +
+                ", rid=" + rid +
+                ", rentalPerMonth=" + rentalPerMonth +
+                ", renterNumber=" + renterNumber +
+                ", uid=" + uid +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", type='" + type + '\'' +
+                ", rentalExpireTime=" + rentalExpireTime +
+                ", createTime=" + createTime +
+                '}';
     }
 }

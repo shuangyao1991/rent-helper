@@ -37,37 +37,25 @@ public class RentInfoServiceImpl implements RentInfoService {
             return;
         }
 
-        int id = rentInfoDAO.getMaxId();
-        rentInfo.setIid(id);
+        Integer id = rentInfoDAO.getMaxId();
+        id = id == null ? 0 : id;
+        rentInfo.setIid(id + 1);
         rentInfoDAO.save(rentInfo);
     }
 
     @Override
-    public void update(RentInfo rentInfo) {
-        if (rentInfo == null || rentInfo.getIid() == null) {
+    public void updateExpireTime(Date rentalExpireTime, int iid) {
+        if (rentalExpireTime == null) {
             logger.warn("No essential information to save.");
             return;
         }
 
-        rentInfoDAO.update(rentInfo);
+        rentInfoDAO.updateExpireTime(rentalExpireTime, iid);
     }
 
     @Override
-    public List<RentInfo> getExpireInfo(String currentTime) {
+    public List<RentInfo> getExpireInfo() {
         List<RentInfo> rentInfos = Lists.newArrayList();
-        if (StringUtils.isBlank(currentTime)) {
-            logger.warn("Null query condition.");
-            return rentInfos;
-        }
-
-        try {
-            Date date = new Date(currentTime);
-        } catch (Exception e) {
-            logger.error("Illegal query time.", e);
-            return rentInfos;
-        }
-
-
-        return null;
+        return rentInfoDAO.getExpireInfo();
     }
 }

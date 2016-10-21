@@ -20,11 +20,11 @@ public class Renter implements Serializable {
 
     private String gender;
 
-    private String birthDay;
+    private Date birthday;
 
     private String comment;
 
-    private String creatTime;
+    private Date createTime;
 
     public Integer getUid() {
         return uid;
@@ -66,12 +66,12 @@ public class Renter implements Serializable {
         this.gender = gender;
     }
 
-    public String getBirthDay() {
-        return birthDay;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public String getComment() {
@@ -82,11 +82,25 @@ public class Renter implements Serializable {
         this.comment = comment;
     }
 
-    public String getCreatTime() {
-        return creatTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatTime(String creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Renter{" +
+                "uid=" + uid +
+                ", name='" + name + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", birthday=" + birthday +
+                ", comment='" + comment + '\'' +
+                ", createTime=" + createTime +
+                '}';
     }
 }

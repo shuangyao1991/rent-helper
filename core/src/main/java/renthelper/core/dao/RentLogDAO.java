@@ -1,5 +1,6 @@
 package renthelper.core.dao;
 
+import org.apache.ibatis.annotations.Param;
 import renthelper.core.model.RentLog;
 
 import java.util.List;
@@ -9,9 +10,7 @@ import java.util.List;
  */
 public interface RentLogDAO {
 
-    public void getMaxId();
+    public Integer getMaxId();
 
-    public void save(RentLog rentLog);
-
-    public List<RentLog> query(int offset, int limit);
+    public void save(@Param("rentLog") RentLog rentLog);
 }

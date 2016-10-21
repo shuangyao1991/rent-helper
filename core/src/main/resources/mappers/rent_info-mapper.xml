@@ -8,11 +8,11 @@
         <result property="uid" column="uid" javaType="java.lang.Integer"/>
         <result property="rentalPerMonth" column="rental_per_month" javaType="java.lang.Integer"/>
         <result property="renterNumber" column="renter_number" javaType="java.lang.Integer"/>
-        <result property="startTime" column="start_time" javaType="java.lang.String"/>
-        <result property="endTime" column="end_time" javaType="java.lang.String"/>
+        <result property="startTime" column="start_time" jdbcType="DATE" typeHandler="DateTypeHandler"/>
+        <result property="endTime" column="end_time" jdbcType="DATE" typeHandler="DateTypeHandler"/>
         <result property="type" column="type" javaType="java.lang.String"/>
-        <result property="rentalExpireTime" column="rental_expire_time" javaType="java.lang.String"/>
-        <result property="createTime" column="create_time" javaType="java.lang.String"/>
+        <result property="rentalExpireTime" column="rental_expire_time" jdbcType="DATE" typeHandler="DateTypeHandler"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP" typeHandler="DateTimeTypeHandler"/>
     </resultMap>
 
     <select id="getMaxId" resultType="java.lang.Integer">
@@ -21,24 +21,34 @@
 
     <insert id="save" parameterType="RentInfo">
         INSERT  INTO rent_info (iid, rid, uid, rental_per_month,
-        <if test="#rentInfo.renterNumber != null">
+        <if test="#{rentInfo.renterNumber} != null">
             renter_number,
         </if>
         start_time, end_time,
-        <if test="#rentInfo.type != null">
+        <if test="#{rentInfo.type} != null">
             type,
         </if>
         rental_expire_time)
-        VALUES (#rentInfo.iid, #rentInfo.rid, #rentInfo.uid, #rentInfo.rentalPerMonth,
-        <if test="#rentInfo.renterNumber != null">
-            #rentInfo.renterNumber,
+        VALUES (#{rentInfo.iid}, #{rentInfo.rid}, #{rentInfo.uid}, #{rentInfo.rentalPerMonth},
+        <if test="#{rentInfo.renterNumber} != null">
+            #{rentInfo.renterNumber},
         </if>
-        #rentInfo.startTime, #rentInfo.endTime,
-        <if test="#rentInfo.type != null">
-            #rentInfo.type,
+        #{rentInfo.startTime, jdbcType=VARCHAR, typeHandler=DateTypeHandler},
+        #{rentInfo.endTime, jdbcType=VARCHAR, typeHandler=DateTypeHandler},
+        <if test="#{rentInfo.type} != null">
+            #{rentInfo.type},
         </if>
-        #rentInfo.rentalExpireTime)
+        #{rentInfo.rentalExpireTime, jdbcType=VARCHAR, typeHandler=DateTypeHandler})
     </insert>
+
+    <update id="updateExpireTime" parameterType="RentInfo">
+        UPDATE rent_info SET rental_expire_time = #{rentalExpireTime, jdbcType=VARCHAR, typeHandler=DateTypeHandler} WHERE iid = #{iid}
+    </update>
+
+    <select id="getExpireInfo" resultMap="rentInfoMap">
+        SELECT * FROM rent_info WHERE end_time > datetime('now', 'localtime')
+        AND datetime('now', 'localtime') > rental_expire_time
+    </select>
 
 
 

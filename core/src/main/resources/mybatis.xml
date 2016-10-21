@@ -10,5 +10,12 @@
 
     <typeAliases>
         <package name="renthelper.core.model"/>
+        <package name="renthelper.core.handlers"/>
     </typeAliases>
+    
+    <typeHandlers>
+        <typeHandler handler="DateTypeHandler" javaType="java.util.Date"/>
+        <typeHandler handler="DateTimeTypeHandler" javaType="java.util.Date"/>
+    </typeHandlers>
+    
 </configuration>

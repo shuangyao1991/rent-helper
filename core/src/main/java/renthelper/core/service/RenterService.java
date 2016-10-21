@@ -2,6 +2,7 @@ package renthelper.core.service;
 
 import renthelper.core.model.Renter;
 
+import java.util.Date;
 import java.util.List;
 
 /**
