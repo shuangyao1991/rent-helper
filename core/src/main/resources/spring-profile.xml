@@ -8,10 +8,10 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <beans profile="product">
-        <context:property-placeholder location="classpath*:/properties/product/datasource.properties"/>
+        <context:property-placeholder location="classpath*:/properties/product/*.properties"/>
     </beans>
 
     <beans profile="test">
-        <context:property-placeholder location="classpath*:/properties/test/datasource.properties"/>
+        <context:property-placeholder location="classpath*:/properties/test/*.properties"/>
     </beans>
 </beans>

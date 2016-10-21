@@ -55,7 +55,6 @@ public class TipDialog extends JDialog{
         messagePane.setText(message);
         this.getContentPane().add(messagePane, BorderLayout.CENTER);
 
-        TipDialogListener listener = new TipDialogListener();
         okButton = new JButton("ok");
         okButton.setName("ok");
         cancelButton = new JButton("cacel");
@@ -64,18 +63,16 @@ public class TipDialog extends JDialog{
         buttonPane.add(okButton);
         buttonPane.add(cancelButton);
         this.getContentPane().add(buttonPane, BorderLayout.SOUTH);
-
-        this.addActionListener(listener, okButton);
-        this.addActionListener(listener, cancelButton);
     }
 
     public void close() {
         this.dispose();
     }
 
-    public void addActionListener(TipDialogListener listener, JButton button) {
+    public void addActionListener(TipDialogListener listener) {
         listener.setTipDialog(this);
-        button.addActionListener(listener);
+        okButton.addActionListener(listener);
+        cancelButton.addActionListener(listener);
     }
 
     @Override

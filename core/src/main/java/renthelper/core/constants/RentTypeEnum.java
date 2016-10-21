@@ -1,5 +1,9 @@
 package renthelper.core.constants;
 
+import com.google.common.collect.Maps;
+
+import java.util.Map;
+
 /**
  * Created with by shuangyao on 2016/10/9.
  */
@@ -16,10 +20,22 @@ public enum  RentTypeEnum {
 
     private String desc;
 
+    private static final Map<String, RentTypeEnum> map = Maps.newHashMap();
+
+    static {
+        for (RentTypeEnum rentTypeEnum : RentTypeEnum.values()) {
+            map.put(rentTypeEnum.getDesc(), rentTypeEnum);
+        }
+    }
+
     RentTypeEnum(Integer source, Integer months, String desc) {
         this.source = source;
         this.months = months;
         this.desc = desc;
+    }
+
+    public static RentTypeEnum getByDesc(String desc) {
+        return map.get(desc);
     }
 
     public Integer getSource() {

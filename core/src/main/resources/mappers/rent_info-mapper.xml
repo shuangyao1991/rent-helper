@@ -50,6 +50,8 @@
         AND datetime('now', 'localtime') > rental_expire_time
     </select>
 
-
+    <select id="getById" resultMap="rentInfoMap">
+        SELECT * FROM rent_info WHERE iid = #{iid}
+    </select>
 
 </mapper>

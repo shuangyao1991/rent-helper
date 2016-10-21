@@ -58,4 +58,9 @@ public class RentInfoServiceImpl implements RentInfoService {
         List<RentInfo> rentInfos = Lists.newArrayList();
         return rentInfoDAO.getExpireInfo();
     }
+
+    @Override
+    public RentInfo getById(int iid) {
+        return rentInfoDAO.getById(iid);
+    }
 }

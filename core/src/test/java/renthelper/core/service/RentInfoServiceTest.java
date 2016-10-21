@@ -50,4 +50,9 @@ public class RentInfoServiceTest extends BaseUnitTest {
         }
 
     }
+
+    @Test
+    public void testGetById() throws Exception {
+        println(rentInfoService.getById(1));
+    }
 }

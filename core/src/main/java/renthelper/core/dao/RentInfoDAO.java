@@ -13,6 +13,8 @@ public interface RentInfoDAO {
 
     public Integer getMaxId();
 
+    public RentInfo getById(@Param("iid") int iid);
+
     public void save(@Param("rentInfo") RentInfo rentInfo);
 
     public void updateExpireTime(@Param("rentalExpireTime") Date rentalExpireTime,

@@ -13,6 +13,8 @@ public interface RentInfoService {
 
     public int getMaxId();
 
+    public RentInfo getById(int iid);
+
     public void save(RentInfo rentInfo);
 
     public void updateExpireTime(Date rentalExpireTime, int iid);
