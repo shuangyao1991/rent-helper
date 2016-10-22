@@ -35,6 +35,12 @@ public class TipDialog extends JDialog{
         initializing(null);
     }
 
+    public TipDialog(String message, String eventKey) {
+        this.message = message;
+        this.eventKey = eventKey;
+        initializing(null);
+    }
+
     public TipDialog(String message, String title, int width, int height) {
         this.message = message;
         this.title = title;
@@ -87,9 +93,5 @@ public class TipDialog extends JDialog{
 
     public String getEventKey() {
         return eventKey;
-    }
-
-    public void setEventKey(String eventKey) {
-        this.eventKey = eventKey;
     }
 }

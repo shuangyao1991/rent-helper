@@ -3,6 +3,7 @@ package renthelper.tipdialog.gui;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import renthelper.core.layout.GBC;
+import renthelper.tipdialog.listerners.ConfirmDialogListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,15 +42,15 @@ public class ConfirmDialog extends JDialog {
     private int height = DEFAULT_HEIGHT;
     private String title = DEFAULT_TITLE;
     private String name, mobile;
-    private int room, month, money;
+    private int room, month, moneyPerMonth;
 
     public ConfirmDialog(String name, String mobile, int room,
-                         int month, int money, String title) {
+                         int month, int moneyPerMonth, String title) {
         this.name = name;
         this.mobile = mobile;
         this.room = room;
         this.month = month;
-        this.money = money;
+        this.moneyPerMonth = moneyPerMonth;
         this.title = title;
         initializing();
     }
@@ -72,7 +73,8 @@ public class ConfirmDialog extends JDialog {
         monthBox.addActionListener(null);
         moneyLabel = new JLabel("缴纳金额：");
         moneyValueField = new JTextField();
-        moneyValueField.setText(money + "");
+        moneyValueField.setText(moneyPerMonth * month + "");
+        moneyValueField.setEditable(false);
         infoPane.add(nameLabel, new GBC(0, 0)
                 .setAnchor(GBC.EAST));
         infoPane.add(nameValueLabel, new GBC(1, 0)
@@ -97,10 +99,32 @@ public class ConfirmDialog extends JDialog {
 
         buttonPane = new JPanel();
         okButton = new JButton("ok");
+        okButton.setName("ok");
         cancelButton = new JButton("cancel");
+        cancelButton.setName("cancel");
         buttonPane.add(okButton);
         buttonPane.add(cancelButton);
         this.add(buttonPane, BorderLayout.SOUTH);
-        this.setVisible(true);
+    }
+
+    public void setMoney(int monthNum) {
+        moneyValueField.setText(moneyPerMonth * monthNum + "");
+    }
+
+    public void addListener(ConfirmDialogListener listener) {
+        listener.setConfirmDialog(this);
+        okButton.addActionListener(listener);
+        cancelButton.addActionListener(listener);
+        monthBox.addItemListener(listener);
+    }
+
+    @Override
+    public int getWidth() {
+        return width;
+    }
+
+    @Override
+    public int getHeight() {
+        return height;
     }
 }

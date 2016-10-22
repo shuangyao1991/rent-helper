@@ -5,6 +5,9 @@ import org.springframework.core.task.TaskExecutor;
 import renthelper.core.BaseUnitTest;
 import renthelper.core.constants.GuiLocationEnum;
 import renthelper.core.utils.GuiUtil;
+import renthelper.tipdialog.listerners.ConfirmDialogListener;
+import renthelper.tipdialog.listerners.TipDialogListener;
+import renthelper.tipdialog.tasks.GuiTask;
 
 import javax.annotation.Resource;
 
@@ -13,21 +16,13 @@ import javax.annotation.Resource;
  */
 public class GuiTest {
 
-    @Resource
-    private TaskExecutor taskExecutor;
-
     @Test
     public void testTipShowDialog() throws Exception {
-        GuiUtil.setDefaultLookAndFeel();
-        TipDialog tipDialog = new TipDialog();
-        GuiUtil.setLocation(tipDialog, GuiLocationEnum.BUTTOM_RIGHT);
-        tipDialog.setEventKey("1");
-        tipDialog.setVisible(true);
+        GuiTask.startTipDialog(1, null, null, null);
     }
 
     @Test
     public void testConfirmDialog() throws Exception {
-        GuiUtil.setDefaultLookAndFeel();
-        ConfirmDialog dialog = new ConfirmDialog("name", "mobile", 111, 3, 123, "title");
+        GuiTask.startConfirmDialog(1, null, null, null);
     }
 }

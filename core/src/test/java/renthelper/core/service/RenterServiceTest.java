@@ -20,9 +20,9 @@ public class RenterServiceTest extends BaseUnitTest {
     @Test
     public void testSave() throws Exception {
         Renter renter = new Renter();
-        renter.setUid(1);
-        renter.setName("test");
-        renter.setMobile("123");
+        renter.setUid(2);
+        renter.setName("test2");
+        renter.setMobile("456");
         renter.setAge(10);
         renter.setBirthday(new Date());
         renterService.save(renter);
