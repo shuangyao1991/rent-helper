@@ -26,6 +26,11 @@
     <task:annotation-driven scheduler="queryScheduler"/>
 
     <task:scheduler id="queryScheduler" pool-size="5"/>
+	
+	<import resource="classpath*:/spring-mybatis.xml"/>
+    <import resource="classpath*:/spring-profile.xml"/>
+
+    <context:component-scan base-package="renthelper.core.service"/>
 
     <!--&lt;!&ndash; 配置线程池 &ndash;&gt;-->
     <!--<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">-->

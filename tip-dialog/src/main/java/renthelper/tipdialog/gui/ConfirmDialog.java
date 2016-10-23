@@ -43,15 +43,17 @@ public class ConfirmDialog extends JDialog {
     private String title = DEFAULT_TITLE;
     private String name, mobile;
     private int room, month, moneyPerMonth;
+    private int iid;
 
     public ConfirmDialog(String name, String mobile, int room,
-                         int month, int moneyPerMonth, String title) {
+                         int month, int moneyPerMonth, String title, int iid) {
         this.name = name;
         this.mobile = mobile;
         this.room = room;
         this.month = month;
         this.moneyPerMonth = moneyPerMonth;
         this.title = title;
+        this.iid = iid;
         initializing();
     }
 
@@ -126,5 +128,13 @@ public class ConfirmDialog extends JDialog {
     @Override
     public int getHeight() {
         return height;
+    }
+
+    public int getIid() {
+        return iid;
+    }
+
+    public int getMonth() {
+        return Integer.valueOf(monthBox.getSelectedItem().toString());
     }
 }

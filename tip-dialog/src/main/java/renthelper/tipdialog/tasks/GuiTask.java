@@ -53,7 +53,7 @@ public class GuiTask {
         int money = rentType.getMonths() * rentInfo.getRentalPerMonth();
         ConfirmDialog confirmDialog = new ConfirmDialog(renter.getName(),
                 renter.getMobile(), rentInfo.getRid(), rentType.getMonths(),
-                rentInfo.getRentalPerMonth(), "title");
+                rentInfo.getRentalPerMonth(), "title", iid);
         confirmDialog.addListener(listener);
         GuiUtil.setLocation(confirmDialog, GuiLocationEnum.CENTER);
         confirmDialog.setVisible(true);
