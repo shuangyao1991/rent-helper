@@ -1,3 +1,4 @@
 dependencies {
     compile 'com.google.code.gson:gson:2.3'
+    compile 'commons-dbcp:commons-dbcp:1.4'
 }

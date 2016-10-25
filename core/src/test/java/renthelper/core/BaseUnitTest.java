@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
  * Created with by shuangyao on 2016/10/21.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath*:/spring-context.xml")
+@ContextConfiguration("classpath:/spring-context.xml")
 @ActiveProfiles("test")
 public class BaseUnitTest {
 
