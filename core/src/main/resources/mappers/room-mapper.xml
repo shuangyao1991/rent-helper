@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="renthelper.core.dao.RoomDAO">
+    <resultMap id="roomMap" type="Room">
+        <result property="rid" column="rid"/>
+        <result property="rentalPerMonth" column="rental_per_month"/>
+        <result property="createTime" column="create_time" javaType="java.util.Date" jdbcType="VARCHAR" typeHandler="DateTimeTypeHandler"/>
+    </resultMap>
+
+    <insert id="save" parameterMap="roomMap">
+        INSERT INTO room (rid, rental_per_month, create_time)
+        VALUES (#{room.rid}, #{room.rentalPerMonth}, #{room.createTime})
+    </insert>
+
+    <select id="getIds" resultMap="java.util.List">
+        SELECT rid FROM room
+    </select>
+
+    <select id="getAll" resultMap="java.util.List" resultType="Room">
+        SELECT * FROM room
+    </select>
+</mapper>
