@@ -31,7 +31,6 @@ public class GuiTask {
         Renter renter = renterService.getById(rentInfo.getUid());
         String message = rentInfo.getRid() + "房间的房租已到期，请及时提醒用户缴租" +
                 "：" + renter.getName() + ", " + renter.getMobile();
-        GuiUtil.setDefaultLookAndFeel();
         TipDialogListener listener = new TipDialogListener(renterService,
                 rentInfoService, rentLogService);
         TipDialog tipDialog = new TipDialog(message, rentInfo.getIid() + "");
@@ -44,7 +43,6 @@ public class GuiTask {
     public static void startConfirmDialog(int iid, RenterService renterService,
                                           RentInfoService rentInfoService,
                                           RentLogService rentLogService) {
-        GuiUtil.setDefaultLookAndFeel();
         ConfirmDialogListener listener = new ConfirmDialogListener(rentInfoService, rentLogService);
 
         RentInfo rentInfo = rentInfoService.getById(iid);

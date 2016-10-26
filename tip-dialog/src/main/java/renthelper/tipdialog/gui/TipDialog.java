@@ -36,6 +36,7 @@ public class TipDialog extends JDialog{
     }
 
     public TipDialog(String message, String eventKey) {
+        super();
         this.message = message;
         this.eventKey = eventKey;
         initializing(null);
