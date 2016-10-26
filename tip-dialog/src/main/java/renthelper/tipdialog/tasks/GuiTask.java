@@ -48,7 +48,6 @@ public class GuiTask {
         RentInfo rentInfo = rentInfoService.getById(iid);
         Renter renter = renterService.getById(rentInfo.getUid());
         RentTypeEnum rentType = RentTypeEnum.getByDesc(rentInfo.getType());
-        int money = rentType.getMonths() * rentInfo.getRentalPerMonth();
         ConfirmDialog confirmDialog = new ConfirmDialog(renter.getName(),
                 renter.getMobile(), rentInfo.getRid(), rentType.getMonths(),
                 rentInfo.getRentalPerMonth(), "title", iid);
